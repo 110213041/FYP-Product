@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import {DB, overrideDB} from '../services/database';
+import {overrideDB} from '../services/database';
 import {useFileSystemAccess} from '@vueuse/core';
-
-import {ref, Ref} from "vue";
 
 
 async function swapDB(e: Event) {
@@ -22,15 +20,15 @@ async function swapDB(e: Event) {
     reader.readAsArrayBuffer(_file);
 }
 
-function checkResult() {
-    const query = `SELECT name FROM sqlite_master WHERE type = 'table'`;
-    const stmt = DB.prepare(query);
-    while (stmt.step()) {
-    console.log(stmt.getAsObject());
-    }
-}
+// function checkResult() {
+//     const query = `SELECT name FROM sqlite_master WHERE type = 'table'`;
+//     const stmt = DB.prepare(query);
+//     while (stmt.step()) {
+//     console.log(stmt.getAsObject());
+//     }
+// }
 
-const dataType = ref('Text') as Ref<'Text' | 'ArrayBuffer' | 'Blob'>
+// const dataType = ref('Text') as Ref<'Text' | 'ArrayBuffer' | 'Blob'>
 const res = useFileSystemAccess()
 
 const content = res.data;

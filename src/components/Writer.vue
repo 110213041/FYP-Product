@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { defineProps } from 'vue';
-import { Note, Cell,Cell_Markdown, Cell_Prompt } from '../types/schema';
+import { Cell,Cell_Markdown, Cell_Prompt } from '../types/schema';
 import { useNoteStore } from '../store/note';
 import WriterCell from './WriterCell.vue';
 import WinterCellPrompt from './WinterCellPrompt.vue';
@@ -71,7 +71,7 @@ function deleteCell(id: string) {
     <template v-if="note">
         <h2>{{ note.name }}</h2>
 
-        <div v-for="(cell, idx) in note.cells">
+        <div v-for="(cell) in note.cells">
             <template v-if="cell.cell_type === 'markdown'">
                 <WriterCell :data="cell" @update="updateCell" @delete="deleteCell"></WriterCell>
             </template>
