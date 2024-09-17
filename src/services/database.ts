@@ -3,7 +3,7 @@ import initSqlJs from "sql.js";
 // @ts-ignore
 import sqlWasm from "sql.js/dist/sql-wasm.wasm?url"
 
-const SQL = await initSqlJs({
+export const SQL = await initSqlJs({
     locateFile: () => sqlWasm
 })
 
